@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="calc-card">
+            <h5 class="text-center mb-3 text-muted text-uppercase tracking-wider">Calculadora Científica</h5>
+
+            <div id="screen" class="calc-screen">0</div>
+
+            <div class="row g-2">
+                <div class="col-3"><button class="btn btn-calc btn-clear w-100" onclick="clearScreen()">C</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-clear w-100" onclick="backspace()">⌫</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-sci w-100" onclick="pressOp('%')">%</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-op w-100" onclick="pressOp('/')">÷</button></div>
+
+                <div class="col-3"><button class="btn btn-calc btn-sci w-100" onclick="sciOp('sin')">sin</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-sci w-100" onclick="sciOp('cos')">cos</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-sci w-100" onclick="sciOp('tan')">tan</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-op w-100" onclick="pressOp('*')">×</button></div>
+
+                <div class="col-3"><button class="btn btn-calc btn-sci w-100" onclick="sciOp('sqrt')">√</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-sci w-100" onclick="pressOp('**')">xʸ</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-sci w-100" onclick="sciOp('log')">log</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-op w-100" onclick="pressOp('-')">-</button></div>
+
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('7')">7</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('8')">8</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('9')">9</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-op w-100" onclick="pressOp('+')">+</button></div>
+
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('4')">4</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('5')">5</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('6')">6</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-sci w-100"
+                        onclick="pressNum('3.14159265')">π</button></div>
+
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('1')">1</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('2')">2</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('3')">3</button></div>
+                <div class="col-3 rowspan-2 align-self-stretch"><button class="btn btn-calc btn-op w-100 h-100"
+                        onclick="calculate()">=</button></div>
+
+                <div class="col-6"><button class="btn btn-calc btn-num w-100" onclick="pressNum('0')">0</button></div>
+                <div class="col-3"><button class="btn btn-calc btn-num w-100" onclick="pressNum('.')">.</button></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
