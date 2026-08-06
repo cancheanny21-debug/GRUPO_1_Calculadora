@@ -123,6 +123,7 @@
 </head>
 
 <body>
+  <body translate="no">
   <div class="container d-flex justify-content-center">
     <div class="calc-card">
       <h5 class="text-center mb-3 text-muted text-uppercase tracking-wider">Calculadora Científica</h5>
@@ -130,96 +131,46 @@
       <div id="screen" class="calc-screen">0</div>
 
       <div class="row g-2">
-
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="toggleAngleMode()">DEG/RAD</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('sin')">sin</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('cos')">cos</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('tan')">tan</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('log')">log</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('ln')">ln</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('sqrt')">√</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('^')">xⁿ</button>
-        </div>
+        <div class="row g-2 mb-2">
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('(')">(</button></div>
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator(')')">)</button></div>
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('sin')">sin</button></div>
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('cos')">cos</button></div>
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('tan')">tan</button></div>
+</div>
+        
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('log')">log</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('ln')">ln</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('sqrt')">√</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('^')">xⁿ</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-action w-100" onclick="clearAll()">AC</button></div>
         <div class="col-3"><button class="btn btn-calc btn-action w-100" onclick="deleteLast()">DEL</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('%')">%</button>
-        </div>
-        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('÷')">÷</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('%')">%</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('÷')">÷</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('7')">7</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('8')">8</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('9')">9</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('×')">×</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('×')">×</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('4')">4</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('5')">5</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('6')">6</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('-')">-</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('-')">-</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('1')">1</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('2')">2</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('3')">3</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('+')">+</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('+')">+</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('0')">0</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('.')">.</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendNumber('π')">π</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendNumber('π')">π</button></div>
         <div class="col-3"><button class="btn btn-calc btn-equals w-100" onclick="calculate()">=</button></div>
       </div>
     </div>
   </div>
-
-<div class="row g-2">
-    
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendFunc('sin(')">sin</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendFunc('cos(')">cos</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendFunc('tan(')">tan</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-danger-custom" onclick="clearScreen()">AC</button></div>
-
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendFunc('log(')">log</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendFunc('ln(')">ln</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendOp('%')">%</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-danger-custom" onclick="deleteLast()">DEL</button></div>
-
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendOp('(')">(</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendOp(')')">)</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendOp('(-)')">(-)</button></div>
-
-
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendOp('^')">xʸ</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendFunc('sqrt(')">√</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendOp('π')">π</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-fn" onclick="appendOp('e')">e</button></div>
-
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('7')">7</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('8')">8</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('9')">9</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-op" onclick="appendOp('÷')">÷</button></div>
-
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('4')">4</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('5')">5</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('6')">6</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-op" onclick="appendOp('×')">×</button></div>
-
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('1')">1</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('2')">2</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('3')">3</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-op" onclick="appendOp('-')">-</button></div>
-
-
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendNum('0')">0</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-number" onclick="appendOp('.')">.</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-equal" onclick="calculate()">=</button></div>
-    <div class="col-3"><button class="btn btn-calc btn-op" onclick="appendOp('+')">+</button></div>
-  </div>
-</div>
+</body>
 
 </html>
