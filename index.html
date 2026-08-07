@@ -5,10 +5,182 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora Científica</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #071426, #123b63, #087ea4);
+    }
+
+    .container {
+      width: 100%;
+    }
+
+
+    .calc-card {
+      width: 100%;
+      max-width: 470px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 25px;
+      background: rgba(10, 25, 47, 0.95);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .calc-card h5 {
+      color: #ffffff !important;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+
+    .calc-screen {
+      width: 100%;
+      min-height: 90px;
+      margin-bottom: 20px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      overflow-x: auto;
+      border: 2px solid #1da1f2;
+      border-radius: 15px;
+      color: #ffffff;
+      background: #020817;
+      box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6);
+      font-family: "Courier New", monospace;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .btn-calc {
+      width: 100%;
+      min-height: 55px;
+      padding: 8px 4px;
+      border: none;
+      border-radius: 13px;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background-color 0.15s ease;
+    }
+
+    .btn-calc:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 7px 14px rgba(0, 0, 0, 0.35);
+    }
+
+
+    .btn-calc:active {
+      transform: scale(0.94);
+    }
+
+    .btn-number {
+      color: #ffffff;
+      background: #26374c;
+    }
+
+    .btn-number:hover {
+      background: #344a64;
+    }
+
+
+    .btn-operator,
+    .btn-op {
+      color: #ffffff;
+      background: #0d6efd;
+    }
+
+    .btn-operator:hover,
+    .btn-op:hover {
+      background: #3385ff;
+    }
+
+
+    .btn-scientific,
+    .btn-fn {
+      color: #bff3ff;
+      background: #164e63;
+    }
+
+    .btn-scientific:hover,
+    .btn-fn:hover {
+      background: #0e7490;
+    }
+
+    .btn-action,
+    .btn-danger-custom {
+      color: #ffffff;
+      background: #dc3545;
+    }
+
+    .btn-action:hover,
+    .btn-danger-custom:hover {
+      background: #ef5362;
+    }
+
+    .btn-equals,
+    .btn-equal {
+      color: #ffffff;
+      background: #198754;
+    }
+
+    .btn-equals:hover,
+    .btn-equal:hover {
+      background: #20a467;
+    }
+
+    .row .btn-calc {
+      height: 100%;
+    }
+
+
+    @media (max-width: 576px) {
+      body {
+        padding: 12px;
+      }
+
+      .calc-card {
+        padding: 18px 14px;
+        border-radius: 20px;
+      }
+
+      .calc-card h5 {
+        font-size: 1rem;
+      }
+
+      .calc-screen {
+        min-height: 75px;
+        padding: 15px;
+        font-size: 1.6rem;
+      }
+
+      .btn-calc {
+        min-height: 50px;
+        font-size: 0.88rem;
+        border-radius: 10px;
+      }
+    }
+  </style>
 
 </head>
 
 <body>
+  <body translate="no">
   <div class="container d-flex justify-content-center">
     <div class="calc-card">
       <h5 class="text-center mb-3 text-muted text-uppercase tracking-wider">Calculadora Científica</h5>
@@ -16,44 +188,39 @@
       <div id="screen" class="calc-screen">0</div>
 
       <div class="row g-2">
-
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="toggleAngleMode()">DEG/RAD</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('sin')">sin</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('cos')">cos</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('tan')">tan</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('log')">log</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('ln')">ln</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100"
-            onclick="appendScientific('sqrt')">√</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('^')">xⁿ</button>
-        </div>
+        <div class="row g-2 mb-2">
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('(')">(</button></div>
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator(')')">)</button></div>
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('sin')">sin</button></div>
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('cos')">cos</button></div>
+  <div class="col"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('tan')">tan</button></div>
+</div>
+        
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('log')">log</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('ln')">ln</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendScientific('sqrt')">√</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('^')">xⁿ</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-action w-100" onclick="clearAll()">AC</button></div>
         <div class="col-3"><button class="btn btn-calc btn-action w-100" onclick="deleteLast()">DEL</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('%')">%</button>
-        </div>
-        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('÷')">÷</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendOperator('%')">%</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('÷')">÷</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('7')">7</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('8')">8</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('9')">9</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('×')">×</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('×')">×</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('4')">4</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('5')">5</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('6')">6</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('-')">-</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('-')">-</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('1')">1</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('2')">2</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('3')">3</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('+')">+</button>
-        </div>
+        <div class="col-3"><button class="btn btn-calc btn-operator w-100" onclick="appendOperator('+')">+</button></div>
+        
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('0')">0</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('.')">.</button></div>
         <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendNumber('π')">π</button>
