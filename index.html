@@ -223,11 +223,125 @@
         
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('0')">0</button></div>
         <div class="col-3"><button class="btn btn-calc btn-number w-100" onclick="appendNumber('.')">.</button></div>
-        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendNumber('π')">π</button></div>
+        <div class="col-3"><button class="btn btn-calc btn-scientific w-100" onclick="appendNumber('π')">π</button>
+        </div>
         <div class="col-3"><button class="btn btn-calc btn-equals w-100" onclick="calculate()">=</button></div>
       </div>
     </div>
   </div>
+  <script>
+    const screen = document.getElementById("screen");
+    let isResultEvaluated = false;
+
+
+    function appendNumber(value) {
+      const valToAppend = value === "π" ? Math.PI.toFixed(6) : value;
+
+      if (screen.innerText === "0" || screen.innerText === "Error" || isResultEvaluated) {
+        if (value === ".") {
+          screen.innerText = "0.";
+        } else {
+          screen.innerText = valToAppend;
+        }
+        isResultEvaluated = false;
+      } else {
+        const lastNum = screen.innerText.split(/[\+\-\×\÷\^%]/).pop();
+        if (value === "." && lastNum.includes(".")) return;
+
+        screen.innerText += valToAppend;
+      }
+    }
+
+
+    function appendOperator(op) {
+      if (screen.innerText === "Error") return;
+      isResultEvaluated = false;
+      const lastChar = screen.innerText.slice(-1);
+
+      if (["+", "-", "×", "÷", "^", "%"].includes(lastChar)) {
+        screen.innerText = screen.innerText.slice(0, -1) + op;
+      } else {
+        screen.innerText += op;
+      }
+    }
+
+
+    function appendScientific(fn) {
+      if (screen.innerText === "Error") return;
+      try {
+        let currentVal = parseFloat(evaluarExpresion(screen.innerText));
+
+        if (isNaN(currentVal)) return;
+
+        let result = 0;
+        switch (fn) {
+          case "sqrt":
+            if (currentVal < 0) throw new Error("Raíz negativa");
+            result = Math.sqrt(currentVal);
+            break;
+          case "log":
+            if (currentVal <= 0) throw new Error("Log no válido");
+            result = Math.log10(currentVal);
+            break;
+          case "ln":
+            if (currentVal <= 0) throw new Error("Ln no válido");
+            result = Math.log(currentVal);
+            break;
+        }
+
+        screen.innerText = Number.isInteger(result) ? result : parseFloat(result.toFixed(8));
+        isResultEvaluated = true;
+      } catch (error) {
+        screen.innerText = "Error";
+        isResultEvaluated = true;
+      }
+    }
+
+
+    function clearAll() {
+      screen.innerText = "0";
+      isResultEvaluated = false;
+    }
+
+
+    function deleteLast() {
+      if (isResultEvaluated || screen.innerText.length === 1 || screen.innerText === "Error") {
+        screen.innerText = "0";
+        isResultEvaluated = false;
+      } else {
+        screen.innerText = screen.innerText.slice(0, -1);
+      }
+    }
+
+
+    function evaluarExpresion(expr) {
+      return expr
+        .replace(/×/g, "*")
+        .replace(/÷/g, "/")
+        .replace(/\^/g, "**")
+        .replace(/%/g, "/100");
+    }
+
+
+    function calculate() {
+      if (screen.innerText === "Error") return;
+      try {
+        let rawExpr = screen.innerText;
+        let expr = evaluarExpresion(rawExpr);
+
+        let res = Function(`"use strict"; return (${expr})`)();
+
+        if (!isFinite(res) || isNaN(res)) {
+          screen.innerText = "Error";
+        } else {
+          screen.innerText = Number.isInteger(res) ? res : parseFloat(res.toFixed(8));
+        }
+      } catch (e) {
+        screen.innerText = "Error";
+      }
+      isResultEvaluated = true;
+    }
+  </script>
 </body>
 
 </html>
